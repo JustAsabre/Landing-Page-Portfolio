@@ -61,7 +61,7 @@ export default function About() {
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-5xl sm:text-6xl font-bold tracking-tight mb-4">
+            <h1 className="text-5xl sm:text-6xl font-display font-bold tracking-tight mb-4">
               About Me
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -150,7 +150,7 @@ export default function About() {
                 : 'opacity-0 translate-y-12'
             }`}
           >
-            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">
+            <h2 className="text-4xl sm:text-5xl font-display font-bold tracking-tight mb-4">
               My Process
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -169,7 +169,7 @@ export default function About() {
                 }`}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
-                <div className="text-5xl font-bold text-primary/20 mb-4">
+                <div className="text-5xl font-display font-bold text-primary/20 mb-4">
                   {step.number}
                 </div>
                 <h3 className="text-xl font-semibold mb-3">{step.title}</h3>

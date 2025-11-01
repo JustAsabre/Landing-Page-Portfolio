@@ -14,6 +14,22 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   </head>
   <body>
+    <div id="loading-screen" style="position: fixed; inset: 0; background: #0a0a0f; z-index: 9999; display: flex; align-items: center; justify-content: center;">
+      <div style="text-align: center;">
+        <div style="font-size: 3rem; font-weight: 700; color: #fff; margin-bottom: 1rem; animation: fadeInUp 0.8s ease-out;">CF</div>
+        <div style="width: 200px; height: 2px; background: linear-gradient(90deg, transparent, #8b5cf6, transparent); animation: shimmer 1.5s infinite;"></div>
+      </div>
+    </div>
+    <style>
+      @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      @keyframes shimmer {
+        0% { transform: translateX(-100%); }
+        100% { transform: translateX(100%); }
+      }
+    </style>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

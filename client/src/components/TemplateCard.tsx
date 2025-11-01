@@ -37,7 +37,7 @@ export default function TemplateCard({
       <div className="relative aspect-video overflow-hidden">
         {isPopular && (
           <Badge
-            className="absolute top-3 right-3 z-10 bg-chart-2 text-white border-0"
+            className="absolute top-3 right-3 z-10 bg-chart-2 dark:bg-chart-2 text-white dark:text-white border-0"
             data-testid="badge-popular"
           >
             Popular

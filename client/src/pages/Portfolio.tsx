@@ -108,7 +108,7 @@ export default function Portfolio() {
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-12">
-            <h1 className="text-5xl sm:text-6xl font-bold tracking-tight mb-4">
+            <h1 className="text-5xl sm:text-6xl font-display font-bold tracking-tight mb-4">
               Portfolio
             </h1>
             <p className="text-lg sm:text-xl text-muted-foreground max-w-2xl mx-auto">
@@ -177,7 +177,7 @@ export default function Portfolio() {
                 : 'opacity-0 translate-y-12'
             }`}
           >
-            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">
+            <h2 className="text-4xl sm:text-5xl font-display font-bold tracking-tight mb-4">
               Pre-Made Templates
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">

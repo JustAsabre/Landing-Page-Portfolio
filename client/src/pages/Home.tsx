@@ -1,3 +1,4 @@
+import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import PortfolioCard from '@/components/PortfolioCard';
 import StatsSection from '@/components/StatsSection';
@@ -43,6 +44,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen">
+      <Navigation />
       <HeroSection />
 
       <section className="py-24 px-4 sm:px-6 lg:px-8">
@@ -63,7 +65,7 @@ export default function Home() {
                 : 'opacity-0 translate-y-12'
             }`}
           >
-            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">
+            <h2 className="text-4xl sm:text-5xl font-display font-bold tracking-tight mb-4">
               Featured Work
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -130,7 +132,7 @@ export default function Home() {
                 : 'opacity-0 translate-y-12'
             }`}
           >
-            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-4">
+            <h2 className="text-4xl sm:text-5xl font-display font-bold tracking-tight mb-4">
               What I Offer
             </h2>
             <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
@@ -170,7 +172,7 @@ export default function Home() {
                 : 'opacity-0 translate-y-12'
             }`}
           >
-            <h2 className="text-4xl sm:text-5xl font-bold tracking-tight mb-6">
+            <h2 className="text-4xl sm:text-5xl font-display font-bold tracking-tight mb-6">
               Let's Create Something Extraordinary
             </h2>
             <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
