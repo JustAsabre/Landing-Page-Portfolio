@@ -5,8 +5,9 @@ import StatsSection from '@/components/StatsSection';
 import Footer from '@/components/Footer';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Button } from '@/components/ui/button';
+import SpotlightCard from '@/components/ui/spotlight-card';
 import { Link } from 'wouter';
-import { ArrowRight, Sparkles, Zap, Target } from 'lucide-react';
+import { ArrowRight, Sparkles, Zap, Target, Webhook } from 'lucide-react';
 
 import ecommerceImage from '@assets/generated_images/E-commerce_landing_page_mockup_ed6f2dbd.png';
 import saasImage from '@assets/generated_images/SaaS_landing_page_mockup_e1317cb4.png';
@@ -39,6 +40,11 @@ export default function Home() {
       icon: Target,
       title: 'High Conversion',
       description: 'Optimized for maximum visitor-to-customer conversion',
+    },
+    {
+      icon: Webhook,
+      title: 'Webhook Relay',
+      description: 'Seamless real-time data integration and webhook management',
     },
   ];
 
@@ -140,21 +146,22 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
-              <div
+              <SpotlightCard
                 key={service.title}
                 className={`p-8 rounded-lg border border-border bg-card hover-elevate transition-all duration-1000 ${
                   servicesSection.isVisible
                     ? 'opacity-100 translate-y-0'
                     : 'opacity-0 translate-y-12'
                 }`}
-                style={{ transitionDelay: `${index * 150}ms` }}
+                spotlightColor="rgba(139, 92, 246, 0.15)"
+                style={{ transitionDelay: `${index * 150}ms` } as React.CSSProperties}
               >
                 <service.icon className="w-12 h-12 text-primary mb-4" />
                 <h3 className="text-xl font-semibold mb-3">{service.title}</h3>
                 <p className="text-muted-foreground">{service.description}</p>
-              </div>
+              </SpotlightCard>
             ))}
           </div>
         </div>

@@ -5,6 +5,7 @@ import TemplateCard from '@/components/TemplateCard';
 import Footer from '@/components/Footer';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Button } from '@/components/ui/button';
+import DotPattern from '@/components/ui/dot-pattern';
 
 import ecommerceImage from '@assets/generated_images/E-commerce_landing_page_mockup_ed6f2dbd.png';
 import saasImage from '@assets/generated_images/SaaS_landing_page_mockup_e1317cb4.png';
@@ -26,6 +27,12 @@ export default function Portfolio() {
     },
     {
       title: 'SaaS Platform',
+      category: 'Software',
+      image: saasImage,
+      year: '2024',
+    },
+    {
+      title: 'Webhook Relay Service',
       category: 'Software',
       image: saasImage,
       year: '2024',
@@ -102,7 +109,15 @@ export default function Portfolio() {
         );
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      <DotPattern
+        width={20}
+        height={20}
+        cx={1}
+        cy={1}
+        cr={1}
+        className="fill-neutral-400/10"
+      />
       <Navigation />
 
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">

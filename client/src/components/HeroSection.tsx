@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { ArrowDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'wouter';
 import { motion, useScroll, useTransform } from 'framer-motion';
+import MagneticButton from '@/components/ui/magnetic-button';
 import heroImage from '@assets/generated_images/Cinematic_hero_workspace_background_46c32e96.png';
 
 export default function HeroSection() {
   const [isLoaded, setIsLoaded] = useState(false);
+  const [titleNumber, setTitleNumber] = useState(0);
   const { scrollY } = useScroll();
   
   // Parallax effect - background moves slower than scroll
@@ -18,7 +20,26 @@ export default function HeroSection() {
     setTimeout(() => setIsLoaded(true), 100);
   }, []);
 
-  const words = ['Crafting', 'Digital', 'Experiences'];
+  const words = useMemo(
+    () => ['Crafting', 'Digital', 'Experiences'],
+    []
+  );
+
+  const animatedWords = useMemo(
+    () => ['Stunning', 'Amazing', 'Beautiful', 'Powerful', 'Modern'],
+    []
+  );
+
+  useEffect(() => {
+    const timeoutId = setTimeout(() => {
+      if (titleNumber === animatedWords.length - 1) {
+        setTitleNumber(0);
+      } else {
+        setTitleNumber(titleNumber + 1);
+      }
+    }, 2000);
+    return () => clearTimeout(timeoutId);
+  }, [titleNumber, animatedWords]);
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -42,22 +63,40 @@ export default function HeroSection() {
       >
         <div className="space-y-6 sm:space-y-8">
           <div className="space-y-2 sm:space-y-4">
-            {words.map((word, index) => (
-              <motion.h1
-                key={word}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isLoaded ? { opacity: 1, y: 0 } : {}}
-                transition={{ 
-                  duration: 0.8, 
-                  delay: index * 0.15,
-                  ease: [0.43, 0.13, 0.23, 0.96]
-                }}
-                className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight text-white dark:text-white"
-                data-testid={`text-hero-word-${index}`}
-              >
-                {word}
-              </motion.h1>
-            ))}
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight text-white dark:text-white text-center">
+              Crafting
+            </h1>
+            <div className="relative h-[4rem] sm:h-[5rem] md:h-[6rem] lg:h-[7rem] flex items-center justify-center overflow-hidden">
+              {animatedWords.map((word, index) => (
+                <motion.h1
+                  key={index}
+                  className="absolute text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight text-white dark:text-white whitespace-nowrap"
+                  initial={{ opacity: 0, y: 100 }}
+                  transition={{ 
+                    type: "spring", 
+                    stiffness: 100, 
+                    damping: 25,
+                    opacity: { duration: 0.3 }
+                  }}
+                  animate={
+                    titleNumber === index
+                      ? {
+                          y: 0,
+                          opacity: 1,
+                        }
+                      : {
+                          y: titleNumber > index ? -100 : 100,
+                          opacity: 0,
+                        }
+                  }
+                >
+                  {word}
+                </motion.h1>
+              ))}
+            </div>
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-display font-bold tracking-tight text-white dark:text-white text-center">
+              Experiences
+            </h1>
           </div>
 
           <motion.p
@@ -74,27 +113,31 @@ export default function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={isLoaded ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.8, delay: 0.8, ease: 'easeOut' }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            className="flex flex-col sm:flex-row items-center justify-center gap-3"
           >
             <Link href="/portfolio">
-              <Button
-                size="lg"
-                variant="default"
-                className="px-8 py-6 text-base sm:text-lg font-semibold"
-                data-testid="button-hero-portfolio"
-              >
-                View Portfolio
-              </Button>
+              <MagneticButton>
+                <Button
+                  size="default"
+                  variant="default"
+                  className="px-6 py-3 text-sm font-medium"
+                  data-testid="button-hero-portfolio"
+                >
+                  View Portfolio
+                </Button>
+              </MagneticButton>
             </Link>
             <Link href="/contact">
-              <Button
-                size="lg"
-                variant="outline"
-                className="px-8 py-6 text-base sm:text-lg font-semibold bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-white/20 dark:bg-white/10 dark:text-white dark:border-white/20 dark:hover:bg-white/20"
-                data-testid="button-hero-contact"
-              >
-                Get in Touch
-              </Button>
+              <MagneticButton>
+                <Button
+                  size="default"
+                  variant="outline"
+                  className="px-6 py-3 text-sm font-medium bg-white/10 backdrop-blur-md border-white/20 text-white hover:bg-white/20 dark:bg-white/10 dark:text-white dark:border-white/20 dark:hover:bg-white/20"
+                  data-testid="button-hero-contact"
+                >
+                  Get in Touch
+                </Button>
+              </MagneticButton>
             </Link>
           </motion.div>
         </div>

@@ -48,7 +48,7 @@ export default function LoadingAnimation() {
                   ease: 'easeInOut'
                 }}
               >
-                CF
+                RI
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0 }}
@@ -56,7 +56,7 @@ export default function LoadingAnimation() {
                 transition={{ delay: 0.3, duration: 0.6 }}
                 className="text-lg text-white/60 tracking-wider"
               >
-                Creative Freelancer
+                RichyTech.inc
               </motion.p>
             </motion.div>
 

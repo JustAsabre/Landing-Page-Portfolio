@@ -3,6 +3,8 @@ import StatsSection from '@/components/StatsSection';
 import Footer from '@/components/Footer';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Card } from '@/components/ui/card';
+import SpotlightCard from '@/components/ui/spotlight-card';
+import DotPattern from '@/components/ui/dot-pattern';
 import { CheckCircle2 } from 'lucide-react';
 
 import portraitImage from '@assets/generated_images/Freelancer_professional_portrait_efa901be.png';
@@ -52,10 +54,20 @@ export default function About() {
     'Conversion Optimization',
     'A/B Testing',
     'Performance Optimization',
+    'Webhook Relay Services',
+    'Real-time Data Integration',
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      <DotPattern
+        width={20}
+        height={20}
+        cx={1}
+        cy={1}
+        cr={1}
+        className="fill-neutral-400/10"
+      />
       <Navigation />
 
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">
@@ -85,7 +97,7 @@ export default function About() {
           >
             <div className="order-2 lg:order-1">
               <h2 className="text-3xl sm:text-4xl font-bold tracking-tight mb-6">
-                Hi, I'm Alex Johnson
+                Hi, I'm Richard Asabre
               </h2>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
                 <p>
@@ -124,7 +136,7 @@ export default function About() {
             <div className="order-1 lg:order-2">
               <img
                 src={portraitImage}
-                alt="Alex Johnson - Freelance Designer"
+                alt="Richard Asabre - Freelance Designer"
                 className="w-full rounded-lg"
               />
             </div>
@@ -160,13 +172,14 @@ export default function About() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {processSteps.map((step, index) => (
-              <Card
+              <SpotlightCard
                 key={step.number}
-                className={`p-6 transition-all duration-1000 ${
+                className={`p-6 rounded-lg border border-border bg-card transition-all duration-1000 ${
                   processSection.isVisible
                     ? 'opacity-100 translate-y-0'
                     : 'opacity-0 translate-y-12'
                 }`}
+                spotlightColor="rgba(139, 92, 246, 0.15)"
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
                 <div className="text-5xl font-display font-bold text-primary/20 mb-4">
@@ -176,7 +189,7 @@ export default function About() {
                 <p className="text-sm text-muted-foreground">
                   {step.description}
                 </p>
-              </Card>
+              </SpotlightCard>
             ))}
           </div>
         </div>

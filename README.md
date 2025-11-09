@@ -2,10 +2,6 @@
 
 A modern, high-performance landing page boilerplate built with React, TypeScript, and Tailwind CSS. Perfect for freelancers, agencies, and creative professionals looking to showcase their work with style.
 
-![TypeScript](https://img.shields.io/badge/TypeScript-5.6.3-3178C6?style=flat-square&logo=typescript&logoColor=white)
-![React](https://img.shields.io/badge/React-18.3.1-61DAFB?style=flat-square&logo=react&logoColor=black)
-![Vite](https://img.shields.io/badge/Vite-5.4.20-646CFF?style=flat-square&logo=vite&logoColor=white)
-![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4.17-06B6D4?style=flat-square&logo=tailwind-css&logoColor=white)
 
 ## ✨ Features
 
@@ -177,7 +173,7 @@ docker run -p 5000:5000 landing-page-portfolio
 
 ### Loading Animation
 A cinematic 2.5-second loading sequence featuring:
-- Animated CF logo with scale and fade effects
+- Animated RI logo with scale and fade effects
 - Gradient loading bar with progress animation
 - Smooth reveal transition using Framer Motion
 

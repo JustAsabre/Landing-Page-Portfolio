@@ -4,6 +4,7 @@ import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Card } from '@/components/ui/card';
+import DotPattern from '@/components/ui/dot-pattern';
 import { Mail, Clock, MapPin } from 'lucide-react';
 
 import saasImage from '@assets/generated_images/SaaS_landing_page_mockup_e1317cb4.png';
@@ -26,8 +27,8 @@ export default function Contact() {
     {
       icon: Mail,
       title: 'Email',
-      value: 'hello@alexjohnson.com',
-      link: 'mailto:hello@alexjohnson.com',
+      value: 'richytech.inc@gmail.com',
+      link: 'mailto:richytech.inc@gmail.com',
     },
     {
       icon: Clock,
@@ -37,12 +38,20 @@ export default function Contact() {
     {
       icon: MapPin,
       title: 'Location',
-      value: 'San Francisco, CA',
+      value: 'Accra, Ghana, GH',
     },
   ];
 
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen relative">
+      <DotPattern
+        width={20}
+        height={20}
+        cx={1}
+        cy={1}
+        cr={1}
+        className="fill-neutral-400/10"
+      />
       <Navigation />
 
       <section className="pt-32 pb-16 px-4 sm:px-6 lg:px-8">

@@ -27,7 +27,6 @@ const formSchema = z.object({
   email: z.string().email('Please enter a valid email'),
   projectType: z.string().min(1, 'Please select a project type'),
   template: z.string().optional(),
-  budget: z.string().optional(),
   message: z.string().min(10, 'Message must be at least 10 characters'),
 });
 
@@ -48,29 +47,58 @@ export default function ContactForm({ templates = [] }: ContactFormProps) {
       email: '',
       projectType: '',
       template: '',
-      budget: '',
       message: '',
     },
   });
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
-    console.log('Form submitted:', data);
     
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    toast({
-      title: 'Request sent!',
-      description: "I'll get back to you within 24 hours.",
-    });
-    
-    form.reset();
-    setIsSubmitting(false);
+    try {
+      // Submit to Netlify Forms
+      const formData = new FormData();
+      formData.append('form-name', 'contact');
+      Object.keys(data).forEach(key => {
+        formData.append(key, data[key as keyof FormData] || '');
+      });
+
+      const response = await fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData as any).toString(),
+      });
+
+      if (response.ok) {
+        toast({
+          title: 'Request sent!',
+          description: "I'll get back to you within 24 hours.",
+        });
+        form.reset();
+      } else {
+        throw new Error('Form submission failed');
+      }
+    } catch (error) {
+      toast({
+        title: 'Error',
+        description: 'Something went wrong. Please try again.',
+        variant: 'destructive',
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+      <form 
+        onSubmit={form.handleSubmit(onSubmit)} 
+        className="space-y-6"
+        name="contact"
+        method="POST"
+        data-netlify="true"
+        data-netlify-honeypot="bot-field"
+      >
+        <input type="hidden" name="form-name" value="contact" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <FormField
             control={form.control}
@@ -130,33 +158,6 @@ export default function ContactForm({ templates = [] }: ContactFormProps) {
                     <SelectItem value="custom">Custom Design</SelectItem>
                     <SelectItem value="template">Template Customization</SelectItem>
                     <SelectItem value="consultation">Consultation</SelectItem>
-                  </SelectContent>
-                </Select>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="budget"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Budget (Optional)</FormLabel>
-                <Select
-                  onValueChange={field.onChange}
-                  defaultValue={field.value}
-                >
-                  <FormControl>
-                    <SelectTrigger data-testid="select-budget">
-                      <SelectValue placeholder="Select range" />
-                    </SelectTrigger>
-                  </FormControl>
-                  <SelectContent>
-                    <SelectItem value="under-5k">Under $5,000</SelectItem>
-                    <SelectItem value="5k-10k">$5,000 - $10,000</SelectItem>
-                    <SelectItem value="10k-25k">$10,000 - $25,000</SelectItem>
-                    <SelectItem value="25k-plus">$25,000+</SelectItem>
                   </SelectContent>
                 </Select>
                 <FormMessage />

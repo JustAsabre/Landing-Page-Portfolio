@@ -36,7 +36,7 @@ export default function Navigation() {
         <div className="flex items-center justify-between h-16 sm:h-20">
           <Link href="/" data-testid="link-home">
             <span className="text-xl sm:text-2xl font-bold tracking-tight hover-elevate px-2 py-1 rounded-md cursor-pointer">
-              CF
+              RI
             </span>
           </Link>
 

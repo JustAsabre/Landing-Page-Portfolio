@@ -9,7 +9,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold tracking-tight">CF</h3>
+            <h3 className="text-2xl font-bold tracking-tight">RI</h3>
             <p className="text-sm text-muted-foreground leading-relaxed">
               Creating award-winning digital experiences that drive results.
             </p>
@@ -95,7 +95,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-border">
           <p className="text-sm text-muted-foreground text-center">
-            © {currentYear} Creative Freelancer. All rights reserved.
+            © {currentYear} RichyTech.inc. All rights reserved.
           </p>
         </div>
       </div>
