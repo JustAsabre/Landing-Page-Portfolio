@@ -6,6 +6,7 @@ import Footer from '@/components/Footer';
 import { useScrollReveal } from '@/hooks/useScrollReveal';
 import { Button } from '@/components/ui/button';
 import SpotlightCard from '@/components/ui/spotlight-card';
+import DotPattern from '@/components/ui/dot-pattern';
 import { Link } from 'wouter';
 import { ArrowRight, Sparkles, Zap, Target, Webhook } from 'lucide-react';
 
@@ -53,16 +54,27 @@ export default function Home() {
       <Navigation />
       <HeroSection />
 
-      <section className="py-24 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <StatsSection stats={stats} />
-        </div>
-      </section>
+      {/* Stats section and below with DotPattern background */}
+      <div className="relative">
+        <DotPattern
+          width={20}
+          height={20}
+          cx={1}
+          cy={1}
+          cr={1}
+          className="fill-neutral-400/10"
+        />
+        
+        <section className="py-24 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <StatsSection stats={stats} />
+          </div>
+        </section>
 
-      <section
-        ref={featuredSection.ref}
-        className="py-24 px-4 sm:px-6 lg:px-8 bg-card"
-      >
+        <section
+          ref={featuredSection.ref}
+          className="py-24 px-4 sm:px-6 lg:px-8 bg-card"
+        >
         <div className="max-w-7xl mx-auto">
           <div
             className={`text-center mb-16 transition-all duration-1000 ${
@@ -195,6 +207,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </div>
+      {/* End of DotPattern background section */}
 
       <Footer />
     </div>
