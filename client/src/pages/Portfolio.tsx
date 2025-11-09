@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLocation } from 'wouter';
 import Navigation from '@/components/Navigation';
 import PortfolioCard from '@/components/PortfolioCard';
 import TemplateCard from '@/components/TemplateCard';
@@ -15,6 +16,7 @@ import realEstateImage from '@assets/generated_images/Real_estate_landing_mockup
 
 export default function Portfolio() {
   const [activeFilter, setActiveFilter] = useState('all');
+  const [, setLocation] = useLocation();
   const portfolioSection = useScrollReveal(0.2);
   const templatesSection = useScrollReveal(0.2);
 
@@ -91,6 +93,10 @@ export default function Portfolio() {
       image: fitnessImage,
     },
   ];
+
+  const handleTemplateSelect = (templateId: string) => {
+    setLocation(`/contact?template=${templateId}`);
+  };
 
   const filters = [
     'All',
@@ -214,7 +220,7 @@ export default function Portfolio() {
               >
                 <TemplateCard
                   {...template}
-                  onSelect={(id) => console.log('Template selected:', id)}
+                  onSelect={handleTemplateSelect}
                 />
               </div>
             ))}

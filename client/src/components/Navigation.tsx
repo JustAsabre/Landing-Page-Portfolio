@@ -76,7 +76,10 @@ export default function Navigation() {
       </div>
 
       {isMobileMenuOpen && (
-        <div className="md:hidden bg-background border-b border-border" data-testid="mobile-menu">
+        <div 
+          className="md:hidden bg-background border-b border-border overflow-hidden animate-in slide-in-from-top duration-300" 
+          data-testid="mobile-menu"
+        >
           <div className="px-4 py-6 space-y-4">
             {navLinks.map((link) => (
               <Link key={link.href} href={link.href}>

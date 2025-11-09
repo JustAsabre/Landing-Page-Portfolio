@@ -1,4 +1,5 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useLocation } from 'wouter';
 import Navigation from '@/components/Navigation';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
@@ -13,8 +14,19 @@ import restaurantImage from '@assets/generated_images/Restaurant_landing_page_mo
 import fitnessImage from '@assets/generated_images/Fitness_app_landing_mockup_b3a6bfd6.png';
 
 export default function Contact() {
+  const [location] = useLocation();
+  const [selectedTemplate, setSelectedTemplate] = useState<string>('');
   const formSection = useScrollReveal(0.2);
   const infoSection = useScrollReveal(0.2);
+
+  useEffect(() => {
+    // Get template from URL query params
+    const params = new URLSearchParams(window.location.search);
+    const template = params.get('template');
+    if (template) {
+      setSelectedTemplate(template);
+    }
+  }, [location]);
 
   const templates = [
     { id: 'saas', name: 'SaaS Landing', image: saasImage },
@@ -81,7 +93,7 @@ export default function Contact() {
             >
               <Card className="p-8">
                 <h2 className="text-2xl font-bold mb-6">Send a Request</h2>
-                <ContactForm templates={templates} />
+                <ContactForm templates={templates} defaultTemplate={selectedTemplate} />
               </Card>
             </div>
 

@@ -8,7 +8,8 @@
     <meta property="og:title" content="RichyTech.inc - Landing Page Design & Development" />
     <meta property="og:description" content="Award-winning freelance web designer creating stunning, high-converting landing pages." />
     <meta property="og:type" content="website" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
+    <link rel="icon" type="image/jpeg" href="/logo.jpg" />
+    <link rel="apple-touch-icon" href="/logo.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -30,6 +31,16 @@
         100% { transform: translateX(100%); }
       }
     </style>
+    
+    <!-- Hidden form for Netlify Forms detection -->
+    <form name="contact" netlify netlify-honeypot="bot-field" hidden>
+      <input type="text" name="name" />
+      <input type="email" name="email" />
+      <input type="text" name="projectType" />
+      <input type="text" name="template" />
+      <textarea name="message"></textarea>
+    </form>
+    
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

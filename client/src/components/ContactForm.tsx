@@ -34,9 +34,10 @@ type FormData = z.infer<typeof formSchema>;
 
 interface ContactFormProps {
   templates?: Array<{ id: string; name: string }>;
+  defaultTemplate?: string;
 }
 
-export default function ContactForm({ templates = [] }: ContactFormProps) {
+export default function ContactForm({ templates = [], defaultTemplate = '' }: ContactFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
 
@@ -45,8 +46,8 @@ export default function ContactForm({ templates = [] }: ContactFormProps) {
     defaultValues: {
       name: '',
       email: '',
-      projectType: '',
-      template: '',
+      projectType: defaultTemplate ? 'template' : '',
+      template: defaultTemplate,
       message: '',
     },
   });
